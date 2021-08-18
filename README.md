@@ -7,6 +7,7 @@ TodoList는 쉽게 찾아볼 수 있는 흔한 주제인 만큼 본인이 최소
 
 ### 그러면 이번 미션은 쉽겠죠? 🤣
 ~~하하하. 그럴리가요.~~ 멘토 마르코가 여러분들을 위해 직접 TodoList 미션을 설계하며 프론트 부분을 Vue로 만들었습니다. 여러분이 백엔드 부분을 완성하여 Todo App을 완성해보세요.
-자세한 요구사항은 학습페이지의 [Opt] Challenge Mission 를 카테고리를 확인하세요!
+
+구현요구사항은 학습페이지의 [Opt] Challenge Mission 를 카테고리를 확인하세요!
 
 [학습페이지로 이동](https://school.programmers.co.kr/)
