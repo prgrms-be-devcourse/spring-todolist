@@ -16,19 +16,19 @@ public class Todo {
     protected String content;
 
     @Column(name = "CREATED_DATE")
-    protected LocalDate created;
+    protected LocalDate updatedAt;
 
     @Column(name = "TODO_DONE")
     protected boolean done = false;
 
     public Todo(String content) {
         this.content = content;
-        this.created = LocalDate.now();
+        this.updatedAt = LocalDate.now();
     }
 
-    public Todo(String content, LocalDate created) {
+    public Todo(String content, LocalDate updatedAt) {
         this.content = content;
-        this.created = created;
+        this.updatedAt = updatedAt;
     }
 
     public Todo() {}
@@ -37,24 +37,17 @@ public class Todo {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public String getContent() {
         return content;
     }
 
-    public void setContent(String content) {
+    public void updateContent(String content) {
         this.content = content;
+        updatedAt = LocalDate.now();
     }
 
-    public LocalDate getCreated() {
-        return created;
-    }
-
-    public void setCreated(LocalDate created) {
-        this.created = created;
+    public LocalDate getUpdatedAt() {
+        return updatedAt;
     }
 
     public boolean isDone() {
@@ -69,20 +62,42 @@ public class Todo {
         done = !done;
     }
 
-    public static class Create extends Todo {
+    public static class Create {
+        private String content;
+        private String status;
 
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+
+        public String getStatus() {
+            return status;
+        }
+
+        public void setStatus(String status) {
+            this.status = status;
+        }
     }
 
+    // TODO: are you sure it is out of persistence context?
     public static class Read extends Todo {
         private Read() {}
         private Read(String content, LocalDate created, boolean done) {
             this.content = content;
-            this.created = created;
+            this.updatedAt = created;
             this.done = done;
         }
 
         public Read getInstance() {
-            return new Read(content, created, done);
+            return new Read(content, updatedAt, done);
         }
+    }
+
+    public static class Update {
+        String content;
     }
 }
