@@ -28,11 +28,14 @@ public abstract class TodoDTO {
     }
 
     public static class Read {
+        @JsonProperty("id")
         private final long id;
+        @JsonProperty("content")
         private final String content;
+        @JsonProperty("updatedAt")
         private final LocalDate updatedAt;
         @JsonProperty("status")
-        private final boolean done;
+        private final String status;
 
         public long getId() {
             return id;
@@ -46,15 +49,15 @@ public abstract class TodoDTO {
             return updatedAt;
         }
 
-        public boolean isDone() {
-            return done;
+        public String getStatus() {
+            return status;
         }
 
         public Read(Todo todo) {
             this.id = todo.id;
             this.content = todo.content;
             this.updatedAt = todo.updatedAt;
-            this.done = todo.done;
+            this.status = todo.done ? Todo.DONE : Todo.NOT_DONE;
         }
     }
 

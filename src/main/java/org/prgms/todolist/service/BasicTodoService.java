@@ -36,9 +36,25 @@ public class BasicTodoService implements TodoService {
     }
 
     @Override
-    public TodoDTO.Read updateTodo(long id, TodoDTO.Update request) {
+    public TodoDTO.Read updateTodo(long id, Todo.Updatable field, String value) {
         Todo todo = todoRepository.findById(id).orElseThrow(noTodoFoundException(id));
-        todo.updateContent(request.getContent());
+        switch(field) {
+            case done:
+                switch(value) {
+                    case Todo.NOT_DONE:
+                        todo.setDone(false);
+                        break;
+
+                    case Todo.DONE:
+                        todo.setDone(true);
+                        break;
+                }
+                break;
+
+            case content:
+                todo.updateContent(value);
+                break;
+        }
         return new TodoDTO.Read(todo);
     }
 

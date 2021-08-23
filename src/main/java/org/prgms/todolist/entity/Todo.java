@@ -21,6 +21,13 @@ public class Todo {
     @Column(name = "TODO_DONE")
     protected boolean done = false;
 
+    public static final String NOT_DONE = "ACTIVE";
+    public static final String DONE = "COMPLETE";
+
+    public enum Updatable {
+        content, done
+    }
+
     public Todo(String content) {
         this.content = content;
         this.updatedAt = LocalDate.now();

@@ -1,5 +1,6 @@
 package org.prgms.todolist.service;
 
+import org.prgms.todolist.entity.Todo;
 import org.prgms.todolist.entity.TodoDTO;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface TodoService {
 
     TodoDTO.Read readTodo(long id);
 
-    TodoDTO.Read updateTodo(long id, TodoDTO.Update request);
+    TodoDTO.Read updateTodo(long id, Todo.Updatable field, String value);
 
     void deleteTodo(long id);
 
