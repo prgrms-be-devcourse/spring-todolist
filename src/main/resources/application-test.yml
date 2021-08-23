@@ -1,16 +1,16 @@
 server:
-  port: 8081
+  port: 8082
 
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:todolist
+    url: jdbc:h2:mem:todolist_test
     username: sa
     password:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
 
     generate-ddl: true
     properties:
