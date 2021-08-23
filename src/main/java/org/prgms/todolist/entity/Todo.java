@@ -62,42 +62,6 @@ public class Todo {
         done = !done;
     }
 
-    public static class Create {
-        private String content;
-        private String status;
 
-        public String getContent() {
-            return content;
-        }
 
-        public void setContent(String content) {
-            this.content = content;
-        }
-
-        public String getStatus() {
-            return status;
-        }
-
-        public void setStatus(String status) {
-            this.status = status;
-        }
-    }
-
-    // TODO: are you sure it is out of persistence context?
-    public static class Read extends Todo {
-        private Read() {}
-        private Read(String content, LocalDate created, boolean done) {
-            this.content = content;
-            this.updatedAt = created;
-            this.done = done;
-        }
-
-        public Read getInstance() {
-            return new Read(content, updatedAt, done);
-        }
-    }
-
-    public static class Update {
-        String content;
-    }
 }

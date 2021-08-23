@@ -1,20 +1,20 @@
 package org.prgms.todolist.service;
 
-import org.prgms.todolist.entity.Todo;
+import org.prgms.todolist.entity.TodoDTO;
 
 import java.util.List;
 
 public interface TodoService {
 
-    Todo.Read createTodo(Todo.Create request);
+    TodoDTO.Read createTodo(TodoDTO.Create request);
 
-    Todo.Read readTodo(long id);
+    TodoDTO.Read readTodo(long id);
 
-    Todo.Read updateTodo(Todo.Update request);
+    TodoDTO.Read updateTodo(long id, TodoDTO.Update request);
 
     void deleteTodo(long id);
 
-    List<Todo.Read> readTodos();
+    List<TodoDTO.Read> readTodos();
 
-    List<Todo.Read> readTodosByStatus(boolean done);
+    List<TodoDTO.Read> readTodosByStatus(boolean done);
 }

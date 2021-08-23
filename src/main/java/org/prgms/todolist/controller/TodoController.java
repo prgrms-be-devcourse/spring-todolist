@@ -1,6 +1,6 @@
 package org.prgms.todolist.controller;
 
-import org.prgms.todolist.entity.Todo;
+import org.prgms.todolist.entity.TodoDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,22 +11,22 @@ import java.util.List;
 public class TodoController {
 
     @PostMapping
-    public ResponseEntity<Todo.Read> createTodo(Object todoInfo) {
+    public ResponseEntity<TodoDTO.Read> createTodo(Object todoInfo) {
         return null;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Todo.Read> readTodo(@PathVariable(name = "id") long id) {
+    public ResponseEntity<TodoDTO.Read> readTodo(@PathVariable(name = "id") long id) {
         return null;
     }
 
     @GetMapping
-    public ResponseEntity<List<Todo.Read>> readStatusTodos(@RequestParam(name = "status") String status) {
+    public ResponseEntity<List<TodoDTO.Read>> readStatusTodos(@RequestParam(name = "status") String status) {
         return null;
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Todo.Read> updateTodo(@PathVariable(name = "id") long id, Object updatedInfo) {
+    public ResponseEntity<TodoDTO.Read> updateTodo(@PathVariable(name = "id") long id, Object updatedInfo) {
         return null;
     }
 
@@ -36,7 +36,7 @@ public class TodoController {
     }
 
     @PatchMapping("/{id}/{status}")
-    public ResponseEntity<Todo.Read> toggleTodo(@PathVariable(name = "id") long id, @PathVariable(name = "status") String status){
+    public ResponseEntity<TodoDTO.Read> toggleTodo(@PathVariable(name = "id") long id, @PathVariable(name = "status") String status){
         return null;
     }
 }
