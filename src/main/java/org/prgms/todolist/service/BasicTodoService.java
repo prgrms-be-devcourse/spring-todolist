@@ -4,6 +4,7 @@ import org.prgms.todolist.entity.Todo;
 import org.prgms.todolist.entity.TodoDTO;
 import org.prgms.todolist.repository.TodoRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -11,6 +12,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class BasicTodoService implements TodoService {
 
     private final TodoRepository todoRepository;
@@ -31,6 +33,7 @@ public class BasicTodoService implements TodoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public TodoDTO.Read readTodo(long id) {
         return new TodoDTO.Read(todoRepository.findById(id).orElseThrow(noTodoFoundException(id)));
     }
@@ -64,11 +67,13 @@ public class BasicTodoService implements TodoService {
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<TodoDTO.Read> readTodos() {
         return todoRepository.findAll().stream().map(TodoDTO.Read::new).collect(Collectors.toList());
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<TodoDTO.Read> readTodosByStatus(boolean done) {
         return todoRepository.findAllByDone(done).stream().map(TodoDTO.Read::new).collect(Collectors.toList());
     }

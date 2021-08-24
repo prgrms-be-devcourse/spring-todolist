@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/todos")
-// @CrossOrigin
+//@CrossOrigin
 public class TodoController {
 
     private final TodoService todoService;
@@ -21,7 +21,7 @@ public class TodoController {
     }
 
     @PostMapping
-    public ResponseEntity<TodoDTO.Read> createTodo(TodoDTO.Create todoInfo) {
+    public ResponseEntity<TodoDTO.Read> createTodo(@RequestBody TodoDTO.Create todoInfo) {
         TodoDTO.Read createdTodo = todoService.createTodo(todoInfo);
         return ResponseEntity.created(URI.create(String.format("/todos/%d", createdTodo.getId()))).body(createdTodo);
     }
@@ -52,7 +52,7 @@ public class TodoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<TodoDTO.Read> updateTodo(@PathVariable(name = "id") long id, TodoDTO.Update updatedInfo) {
+    public ResponseEntity<TodoDTO.Read> updateTodo(@PathVariable(name = "id") long id, @RequestBody TodoDTO.Update updatedInfo) {
         return ResponseEntity.ok(todoService.updateTodo(id, Todo.Updatable.content, updatedInfo.getContent()));
     }
 

@@ -1,14 +1,12 @@
 package org.prgms.todolist.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 public class Todo {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "TODO_ID")
     protected long id;
 
@@ -69,6 +67,8 @@ public class Todo {
         done = !done;
     }
 
-
-
+    @Override
+    public String toString() {
+        return String.format("[TODO #%d] %s / %s", id, content, updatedAt);
+    }
 }
